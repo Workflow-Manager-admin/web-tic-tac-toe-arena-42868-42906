@@ -1,0 +1,309 @@
+:root {
+  --primary: #1976D2;
+  --secondary: #424242;
+  --accent: #FFD600;
+  --bg-light: #fff;
+  --bg-board: #f5f7fa;
+  --ttt-border: #e0e0e0;
+  --cell-hover: #f0f4fa;
+  --cell-x: #1976D2;
+  --cell-o: #FFD600;
+  --cell-bg: #fff;
+  --text-main: #282c34;
+  --text-dark: #1c2331;
+  --text-muted: #667;
+}
+
+[data-theme="dark"] {
+  --bg-light: #181818;
+  --bg-board: #22263A;
+  --ttt-border: #393939;
+  --text-main: #ececec;
+  --text-dark: #b3b3b3;
+  --text-muted: #999;
+  --cell-bg: #24263C;
+}
+
+body, html {
+  background: var(--bg-light);
+  color: var(--text-main);
+}
+
+.main-app-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-light);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, "Fira Sans", sans-serif;
+}
+
+.ttt-root-container {
+  background: var(--bg-board);
+  border-radius: 20px;
+  padding: 2.4rem 1.1rem 1.3rem 1.1rem;
+  box-shadow: 0px 8px 32px 0px rgba(35, 41, 68, 0.15),0 0 0 1px rgba(40,40,40,0.02);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 330px;
+  max-width: 375px;
+  width: 96vw;
+}
+
+.ttt-header {
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.ttt-header h1 {
+  font-weight: 900;
+  font-size: 2.05rem;
+  margin: 0;
+  letter-spacing: 2px;
+  color: var(--primary);
+}
+
+.mode-select {
+  margin-top: 0.4rem;
+}
+
+.mode-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 0.15rem;
+}
+
+.mode-btn {
+  padding: 7px 23px;
+  border-radius: 10px;
+  font-size: 1.01rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  background: #f7f9fc;
+  color: var(--secondary);
+  border: 1.5px solid #e1e1e1;
+  transition: background 0.2s, color 0.2s;
+}
+
+.mode-btn.active, .mode-btn:active {
+  background: var(--primary);
+  color: var(--accent);
+  border: 1.5px solid var(--primary);
+}
+
+.mode-btn:disabled {
+  opacity: 0.47;
+  pointer-events: none;
+}
+
+.score-section {
+  margin: 0.85rem 0 1.18rem 0;
+  width: 100%;
+}
+
+.scoreboard-root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 0.25rem;
+  gap: 7px;
+  font-size: 1.11rem;
+  font-weight: 500;
+  border-radius: 8px;
+  background: #f9fafe;
+  box-shadow: 0 1px 10px 0px rgba(25, 118, 210, 0.03);
+}
+
+.scoreboard-root > span {
+  min-width: 64px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.board-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 68px);
+  grid-template-rows: repeat(3, 68px);
+  gap: 0.3rem;
+  margin: 0.65rem 0 0.7rem 0;
+  background: var(--bg-board);
+  border-radius: 14px;
+  box-shadow: 0 2px 10px 0px rgba(50,60,80,0.06);
+}
+
+.ttt-cell {
+  width: 68px;
+  height: 68px;
+  font-size: 2.4rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 2.4px solid var(--ttt-border);
+  background: var(--cell-bg);
+  color: var(--cell-x);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s, border 0.19s, color 0.13s;
+  outline: none;
+  user-select: none;
+}
+
+.ttt-cell:active {
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.ttt-cell:disabled {
+  background: #f7f7f7;
+  color: #bababa;
+  cursor: default;
+}
+
+.ttt-cell:hover:not(:disabled) {
+  background: var(--cell-hover);
+  border-color: var(--primary);
+}
+
+.status-section {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+
+.status {
+  font-size: 1.13rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--secondary);
+  letter-spacing: 1px;
+}
+
+.winnerText {
+  font-size: 1.32rem;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  color: var(--accent);
+}
+
+.tieText {
+  font-size: 1.24rem;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.start-btn, .reset-btn, .fullreset-btn {
+  margin: 7px 7px 0px 7px;
+  padding: 10px 34px;
+  border-radius: 9px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  background: var(--primary);
+  color: #fff;
+  transition: background 0.19s, transform 0.17s;
+  box-shadow: 0 1px 5px 0 #e5effe24;
+}
+
+.reset-btn {
+  background: var(--secondary);
+  color: var(--accent);
+  font-size: 1.07rem;
+  margin-right: 5px;
+}
+
+.fullreset-btn {
+  background: transparent;
+  border: 1.5px solid var(--secondary);
+  color: var(--secondary);
+  font-weight: 500;
+  padding: 9px 22px;
+  margin-left: 5px;
+}
+
+.start-btn:hover, .reset-btn:hover, .fullreset-btn:hover {
+  transform: translateY(-1.5px) scale(1.038);
+  box-shadow: 0 5px 14px 1px #afd2ef1a;
+  opacity: 0.98;
+}
+
+.start-btn:active, .reset-btn:active, .fullreset-btn:active {
+  transform: scale(1);
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 13px;
+  right: 17px;
+}
+
+.theme-toggle-btn {
+  border: none;
+  background: var(--secondary);
+  color: var(--accent);
+  border-radius: 30px;
+  font-size: 1.16rem;
+  cursor: pointer;
+  padding: 8px 16px;
+  font-weight: 700;
+}
+
+.theme-toggle-btn:hover {
+  opacity: 0.88;
+  background: var(--primary);
+}
+
+.footer-text {
+  margin-top: 1.2rem;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: underline dotted;
+}
+
+@media (max-width: 562px) {
+  .ttt-root-container {
+    max-width: 98vw;
+    padding: 1.1rem 0.3rem 0.85rem 0.3rem;
+    min-width: unset;
+  }
+  .ttt-header h1 { font-size: 1.3rem; }
+  .ttt-board {
+    grid-template-columns: repeat(3, minmax(46px, 18vw));
+    grid-template-rows: repeat(3, minmax(46px, 18vw));
+    gap: 0.12rem;
+  }
+  .ttt-cell {
+    width: 13vw;
+    height: 13vw;
+    font-size: 1.48rem;
+    border-radius: 9px;
+  }
+  .score-section, .scoreboard-root { font-size: 0.99rem; }
+  .controls-row {
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 0.22rem;
+  }
+}
+
+.controls-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 0.47rem 0 0.04rem 0;
+}
